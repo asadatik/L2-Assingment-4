@@ -1,24 +1,40 @@
 import { Button } from "@/components/ui/button";
-import { nextQuestion } from "@/features/quizSlice";
-import { useAppDispatch } from "@/redux/hook";
+import { nextQuestion , previousQuestion  } from "@/features/quizSlice";
+import { useAppDispatch, useAppSelector } from "@/redux/hook";
 
 
 function QuizControls() {
 
       const dispatch = useAppDispatch() ;
- 
+ const { currentQuestionIndex, userAnswer,  } = useAppSelector((state) => state.quiz);
+  
+
+       const isAnswerSelected = userAnswer[currentQuestionIndex] !== null;
+
+     console.log(isAnswerSelected) ;
 
  const handleNext = () => {
-   
+       if (isAnswerSelected) {
       dispatch(nextQuestion());
     }
+    }
+
+
+
+ const handlePrev = () => {
+    if (isAnswerSelected) {
+      dispatch(previousQuestion());
+    }
+    }
+
+
 
 
     return (
         <div className="  flex justify-between mx-auto container  ">
 
           
-           <Button>  -  </Button>
+           <Button   onClick={handlePrev} >  -  </Button>
  <Button  onClick={handleNext}  >  +   </Button>
         </div>
     );
