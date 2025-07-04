@@ -1,6 +1,6 @@
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card.tsx'
 import { useAppDispatch, useAppSelector } from '../redux/hook'
-import  QuizControls from './QuizComtrols.tsx'
+import  QuizControls from  './QuizControls'
 import { Button } from '@/components/ui/button.tsx'
 import { setAnswer } from '@/features/quizSlice.ts'
 

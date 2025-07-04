@@ -1,7 +1,7 @@
 
 import './App.css'
 import { Button } from './components/ui/button'
-import Question from './home/question'
+import Question from './home/Question'
 
 function App() {
 
