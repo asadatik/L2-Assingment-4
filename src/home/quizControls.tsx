@@ -38,7 +38,7 @@ function QuizControls() {
 
     return (
         <div className="  flex justify-between mx-auto container  ">
-
+            
         {/* Previous Button */}
       <Button
         onClick={handlePrev}

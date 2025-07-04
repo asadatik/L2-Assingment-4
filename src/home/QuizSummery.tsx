@@ -1,5 +1,6 @@
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import { useAppSelector } from "@/redux/hooks";
+import { useAppSelector } from "@/redux/hook";
+
 import * as Progress from "@radix-ui/react-progress";
 
 // Helper function to get performance rating and color based on the percentage

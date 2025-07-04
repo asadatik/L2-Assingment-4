@@ -1,4 +1,4 @@
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card.tsx'
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card.tsx'
 import { useAppDispatch, useAppSelector } from '../redux/hook'
 import  QuizControls from  './QuizControls'
 import { Button } from '@/components/ui/button.tsx'
@@ -42,6 +42,7 @@ console.log(ans , 'paici reeeeee')
         <CardContent>
           <div>
             {currentQuestion.options.map((option, index) => (
+              
               <Button
                 variant={option === currentAnswer ? "default" : "outline"}
                 onClick={() => handleAnswerChange(option)}
