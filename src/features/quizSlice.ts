@@ -37,3 +37,4 @@ export const quizSlice = createSlice({
 export const { setAnswer , nextQuestion , previousQuestion}=quizSlice.actions;
 export default quizSlice.reducer
 
+               
