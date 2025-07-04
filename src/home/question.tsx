@@ -1,10 +1,14 @@
+import { useAppSelector } from '../redux/hook'
 
 const Question = () => {
-    return (
-        <div>
-            <h1>Question</h1>
-        </div>
-    );
-};
+  const { quiz } = useAppSelector((state) => state.quiz) // ✅ fixed arrow function
+  console.log(quiz)
 
-export default Question;
+  return (
+    <div>
+      <h1>Question</h1>
+    </div>
+  )
+}
+
+export default Question
