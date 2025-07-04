@@ -1,16 +1,17 @@
-
-
+import { quizData } from '@/home/quizData';
 import { createSlice } from '@reduxjs/toolkit'
-import { quizData } from '@/home/quizData'
+
 
 const initialState = {
-  quiz: quizData
+ quiz: quizData
 }
 
-const quizSlice = createSlice({
+export const quizSlice = createSlice({
   name: "quiz",
-  initialState,
-  reducers: {}
-})
 
-export default quizSlice.reducer // ✅ export default reducer only
+  initialState,
+  reducers: {} })
+
+
+export default quizSlice.reducer
+
