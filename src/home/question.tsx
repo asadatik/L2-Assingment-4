@@ -1,10 +1,16 @@
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card.tsx'
-import { useAppSelector } from '../redux/hook'
+import { useAppDispatch, useAppSelector } from '../redux/hook'
 import  QuizControls from './QuizComtrols.tsx'
 import { Button } from '@/components/ui/button.tsx'
+import { setAnswer } from '@/features/quizSlice.ts'
+
+
 const Question = () => {
   const { questions  ,currentQuestionIndex , userAnswer   } = useAppSelector((state) => state.quiz) // ✅ fixed arrow function
   console.log(questions)
+
+  const dispatch = useAppDispatch();
+
 
  const currentQuestion = questions[currentQuestionIndex];
   const currentAnswer = userAnswer[currentQuestionIndex];
@@ -12,12 +18,12 @@ const Question = () => {
 
 
  const handleAnswerChange = (ans: string) => {
-    // dispatch(
-    //   setAnswer({
-    //     questionIndex: currentQuestionIndex,
-    //     answer: ans,
-    //   })
-    // );
+    dispatch(
+      setAnswer({
+        questionIndex: currentQuestionIndex,
+        answer: ans,
+      })
+    );
     
 console.log(ans , 'paici reeeeee')
 
