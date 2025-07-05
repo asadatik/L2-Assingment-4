@@ -9,7 +9,7 @@ import { BookCard } from "./BookCard";
 
 const BooksSection = () => {
   const { data, isLoading } = useGetBooksQuery(undefined);
-  const books: TBook[] = data?.data?.slice(0, 8) || [];
+  const books: TBook[] = data?.data?.slice(0, 9) || [];
 
   if (isLoading || !data?.data) {
     return <Loader />;

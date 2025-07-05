@@ -10,24 +10,24 @@ export default function Navbar() {
 
   const navLinks = [
     {
-      href: "/books",
+      to: "/books",
       label: "All Books",
       icon: BookOpen,
     },
     {
-      href: "/add-book",
+      to: "/add-book",
       label: "Add Book",
       icon: Plus,
     },
     {
-      href: "/borrow-summary",
+      to: "/borrow-summary",
       label: "Borrow Summary",
       icon: FileText,
     },
   ]
 
   return (
-    <nav className="sticky top-0 z-50 bg-white/5 backdrop-blur-md border-b border-gray-200/50 shadow-lg shadow-purple-500/5">
+    <nav className="sticky top-0 z-50 bg-blue-50 backdrop-blur-md border-b border-gray-200/50 shadow-lg shadow-purple-500/5">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo/Brand */}
@@ -47,8 +47,8 @@ export default function Navbar() {
               const IconComponent = link.icon
               return (
                 <Link
-                  key={link.href}
-                  to='/'
+                  key={link.to}
+                  to={link.to}
                   className="group relative px-4 py-2 rounded-lg text-gray-600 hover:text-gray-900 transition-all duration-300 hover:bg-gradient-to-r hover:from-purple-50 hover:to-blue-50 hover:scale-105"
                 >
                   {/* Animated background */}
@@ -60,7 +60,7 @@ export default function Navbar() {
                   </div>
 
                   {/* Animated underline */}
-                  <div className="absolute bottom-0 left-1/2 w-0 h-0.5 bg-gradient-to-r from-purple-500 to-blue-500 group-hover:w-full group-hover:left-0 transition-all duration-300 rounded-full" />
+                  <div className="absolute bottom-0 left-1/2 w-0 h-0.5 bg-gradient-to-r from-purple-800 to-blue-800 group-hover:w-full group-hover:left-0 transition-all duration-300 rounded-full" />
                 </Link>
               )
             })}
@@ -90,8 +90,8 @@ export default function Navbar() {
               const IconComponent = link.icon
               return (
                 <Link
-                  key={link.href}
-                  to='/'
+                  key={link.to}
+                  to={link.to}
                   onClick={() => setIsMobileMenuOpen(false)}
                   className={`group flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-600 hover:text-gray-900 hover:bg-gradient-to-r hover:from-purple-50 hover:to-blue-50 transition-all duration-300 hover:scale-105 hover:translate-x-2 ${
                     isMobileMenuOpen ? "animate-in slide-in-from-left" : ""
@@ -113,7 +113,7 @@ export default function Navbar() {
       </div>
 
       {/* Animated border bottom */}
-      <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-purple-500/20 to-transparent" />
+      <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-purple-700/20 to-transparent" />
     </nav>
   )
 }
