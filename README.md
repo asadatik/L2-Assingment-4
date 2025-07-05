@@ -8,8 +8,8 @@ The system follows a modular, scalable architecture with clearly separated respo
 
 ## 🚀 Live Links
 
-- 🔗 **Client Site**: [](https://assingmnet-4.vercel.app)
-- 🔗 **Server Site**: [](https://mongose.vercel.app)
+- 🔗 **Client Site**: [https://assingmnet-4.vercel.app](https://assingmnet-4.vercel.app)
+- 🔗 **Server Site**: [https://mongose.vercel.app](https://mongose.vercel.app)
 
 ---
 
