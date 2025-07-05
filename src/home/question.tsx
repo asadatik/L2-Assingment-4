@@ -1,4 +1,4 @@
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card.tsx'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card.tsx'
 import { useAppDispatch, useAppSelector } from '../redux/hook'
 import  QuizControls from  './QuizControls'
 import { Button } from '@/components/ui/button.tsx'
