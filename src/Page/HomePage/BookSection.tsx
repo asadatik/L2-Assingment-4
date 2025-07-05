@@ -20,10 +20,10 @@ const BooksSection = () => {
       {/* <Banner /> */}
 
       <h2 className="w-full mx-auto my-4 text-center font-semibold text-3xl">
-        Popular Books
+        Latests Book 🚨
       </h2>
 
-      <div className="grid grid-cols-2 md:grid-cols-3  gap-4 md:gap-5">
+      <div className="grid grid-cols-1 md:grid-cols-3  gap-4 md:gap-5">
         {books.map((book) => (
           <BookCard book={book} key={book._id} />
         ))}
