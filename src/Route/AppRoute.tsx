@@ -1,20 +1,33 @@
-// src/routes/AppRoutes.tsx
-
+import App from "@/App";
+import AddBook from "@/Page/AddBook/AddBook";
 import AllBooksPage from "@/Page/AllBook";
+
 import Home from "@/Page/HomePage/Home";
-import { Routes, Route } from "react-router-dom";
+
+import { createBrowserRouter } from "react-router-dom";
+
+const AppRoute = createBrowserRouter([
+   {
+    path: "/",
+    element: <App />, // App er moddhei Outlet ase
+    children: [
+      {
+        path: "/",
+        element: <Home />,
+      },
+      {
+        path: "/books",
+        element: <AllBooksPage />,
+
+      },
+ {
+        path: "/add-book",
+        element: <AddBook/>,
+
+      },
 
 
-const AppRoutes = () => {
-  return (
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/books" element={<AllBooksPage />} />
-      {/* <Route path="/create-book" element={<CreateBook />} />
-      <Route path="/edit-book/:id" element={<EditBook />} />
-      <Route path="/books/:id" element={<BookDetails />} /> */}
-    </Routes>
-  );
-};
-
-export default AppRoutes;
+    ],
+  },
+]);
+export default AppRoute;

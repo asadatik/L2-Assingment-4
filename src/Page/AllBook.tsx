@@ -149,7 +149,10 @@ if (isLoading) {
                   <TableCell>{book.copies}</TableCell>
                   <TableCell>
                     {book.copies > 0 ? (
-                      <Badge variant="default">Available</Badge>
+                      <Badge 
+                className="shrink-0 animate-pulse group-hover:animate-none transition-all duration-300 hover:scale-105 bg-gradient-to-r from-purple-500 to-blue-500 text-white border-0 shadow-md"
+                      
+                      >Available</Badge>
                     ) : (
                       <Badge variant="destructive">Unavailable</Badge>
                     )}
@@ -161,13 +164,15 @@ if (isLoading) {
                       </Button>
                     </Link>
                     <Link to={`/books/${book._id}`}>
-                      <Button size="sm">
+                      <Button
+                      
+                      size="sm">
                         <Eye className="h-4 w-4" />
                       </Button>
                     </Link>
                     <Button
                       size="sm"
-                      variant="destructive"
+                        className="bg-red-400"
                       onClick={() => handleDelete(book._id)}
                     >
                       <Trash2 className="h-4 w-4" />

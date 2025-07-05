@@ -29,8 +29,8 @@ const BooksSection = () => {
         ))}
       </div>
 
-      <NavLink className="mt-5 flex justify-center items-center" to="/books">
-        <Button className="mx-auto">See All</Button>
+      <NavLink    className="mt-5 flex justify-center items-center" to="/books">
+        <Button  className="mx-auto">See All</Button>
       </NavLink>
     </section>
   );
