@@ -41,8 +41,8 @@ const AllBooksPage = () => {
           } else {
             toast.error("Failed to delete book");
           }
-        // eslint-disable-next-line @typescript-eslint/no-unused-vars
-        } catch (error) {
+       
+        } catch  {
           toast.error("Something went wrong");
         }
       }
@@ -78,14 +78,14 @@ if (isLoading) {
               <BookOpen className="h-8 w-8 text-white" />
             </div>
             <h1 className="text-4xl font-bold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
-              All Books
+                    All Books
             </h1>
           </div>
           <p className="text-gray-600 text-lg">Explore and manage the collection</p>
         </div>
 
         {/* Search & Filter */}
-        <div className="mb-8 bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-gray-200/50">
+        <div className="mb-4 bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-gray-200/50">
           <div className="flex flex-col md:flex-row gap-4">
             <div className="relative flex-1">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 h-5 w-5" />
@@ -119,7 +119,7 @@ if (isLoading) {
         <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-gray-200/50 overflow-hidden">
           <Table>
             <TableCaption className="text-gray-600 py-6 text-base">
-              {filteredBooks.length} books found in the library
+             <span  className="text-blue-400 text-xl  font-medium" >  {filteredBooks.length} </span>    books found in the library
             </TableCaption>
             <TableHeader>
               <TableRow className="bg-gradient-to-r from-purple-50/50 to-blue-50/50">
@@ -140,7 +140,7 @@ if (isLoading) {
                   <TableCell>
                     <Badge
                   
-                      className="capitalize"
+                      className="bg-gray-700  "
                     >
                       {book.genre}
                     </Badge>
@@ -158,7 +158,7 @@ if (isLoading) {
                     )}
                   </TableCell>
                   <TableCell className="text-right flex justify-end gap-2">
-                    <Link to={`/edit-book/${book._id}`}>
+                    <Link to={`/update-book/${book._id}`}>
                       <Button size="sm" variant="outline">
                         <Edit2 className="h-4 w-4" />
                       </Button>

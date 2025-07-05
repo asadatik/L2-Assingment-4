@@ -4,13 +4,14 @@ import {Card, CardDescription, CardFooter, CardHeader, CardTitle,
 } from "@/components/ui/card";
 import { useDeleteBookMutation } from "@/features/api/BooksApi";
 import type { TBook } from "@/type";
-// import { BorrowModal } from "@/pages/allBooks/components/BorrowModal";
+
 
 
 import { Edit2, Eye, Trash2 } from "lucide-react";
 import { Link } from "react-router-dom"; // ✅ fixed import
 import { toast } from "react-toastify";
 import Swal from "sweetalert2";
+import { BorrowModal } from "../Borrow/BorrowModal";
 
 interface IBookCardProps {
   book: TBook;
@@ -115,6 +116,11 @@ export function BookCard({ book }: IBookCardProps) {
           </CardHeader>
 
           <CardFooter className="flex gap-2 justify-end pt-4">
+<Button title="borrow Book" type="submit" className="border  border-gray-500    hover:bg-gray-300 bg-white text-black ">
+  <BorrowModal bookId={book._id} isHome={true} />
+</Button>
+
+
             <Button
               title="Delete Book"
               onClick={handleDelete}
@@ -125,7 +131,7 @@ export function BookCard({ book }: IBookCardProps) {
               <Trash2 className="h-4 w-4 group-hover/btn:animate-bounce" />
             </Button>
 
-            <Link to={`/edit-book/${book?._id}`}>
+            <Link to={`/update-book/${book?._id}`}>
               <Button
                 title="Edit Book"
                 variant="outline"
@@ -144,6 +150,9 @@ export function BookCard({ book }: IBookCardProps) {
                 <Eye className="h-4 w-4 group-hover/btn:scale-110 transition-transform duration-300" />
               </Button>
             </Link>
+
+            
+
           </CardFooter>
         </div>
       </Card>

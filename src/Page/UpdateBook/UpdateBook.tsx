@@ -5,10 +5,11 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
+
+import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
-import { useNavigate } from "react-router-dom";
-import { useAddBookMutation } from "@/features/api/BooksApi";
-import { BookOpen } from "lucide-react";
+import { useEffect, useState } from "react";
+import { useUpdateBookMutation } from "@/features/api/BooksApi";
 
 type TBookInput = {
   title: string;
@@ -28,52 +29,66 @@ const genres = [
   "FANTASY",
 ];
 
-const AddBook = () => {
-  const { register, handleSubmit, reset } = useForm<TBookInput>();
-  const [createBook] = useAddBookMutation();
+const UpdateBook= () => {
+  const { register, handleSubmit, setValue, reset } = useForm<TBookInput>();
+  const { bookId } = useParams();
+  const [updateBook] = useUpdateBookMutation();
+  const [bookData, setBookData] = useState<TBookInput | null>(null);
   const navigate = useNavigate();
+
+  // Fetch book details by ID
+  useEffect(() => {
+    const fetchBookData = async () => {
+      const response = await fetch(`http://localhost:5000/api/books/${bookId}`);
+      const data = await response.json();
+      setBookData(data.data);
+      if (data?.data) {
+        setValue("title", data.data.title);
+        setValue("author", data.data.author);
+        setValue("genre", data.data.genre);
+        setValue("isbn", data.data.isbn);
+        setValue("description", data.data.description);
+        setValue("copies", data.data.copies);
+      }
+    };
+
+    fetchBookData();
+  }, [bookId, setValue]);
 
   const onSubmit = async (data: TBookInput) => {
     try {
       const payload = { ...data, copies: Number(data.copies) };
-      const res = await createBook(payload);
-      
+      const res = await updateBook({ id: bookId, data: payload });
+    
       if (res?.data?.success) {
-        toast.success("Book added successfully!");
+        toast.success("Book updated successfully!");
         reset();
         navigate("/books");
       }
     } catch (err) {
-      toast.error("Failed to add book");
+      toast.error("Failed to update book");
       console.error(err);
     }
   };
 
+  if (!bookData) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <section className="max-w-xl mx-auto p-6 bg-white rounded-xl shadow-md my-10">
-        {/* Header */}
-             <div className="text-center mb-8">
-               <div className="inline-flex items-center gap-3 mb-4">
-                 <div className="p-3 rounded-full bg-gradient-to-r from-purple-500 to-blue-500 shadow-lg">
-                   <BookOpen className="h-4 w-4 text-white" />
-                 </div>
-                 <h1 className="text-2xl font-bold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
-                         Add New Book
-                 </h1>
-               </div>
-              
-             </div>
+      <h2 className="text-2xl font-semibold mb-6 text-center">📝 Update Book</h2>
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
         <div>
-          <Label className="m-2"  >Title</Label>
+          <Label>Title</Label>
           <Input {...register("title", { required: true })} />
         </div>
         <div>
-          <Label className="m-2"   >Author</Label>
+          <Label>Author</Label>
           <Input {...register("author", { required: true })} />
         </div>
         <div>
-          <Label className="m-2" >Genre</Label>
+          <Label>Genre</Label>
           <select
             {...register("genre", { required: true })}
             className="w-full px-3 py-2 border rounded-md"
@@ -87,29 +102,24 @@ const AddBook = () => {
           </select>
         </div>
         <div>
-          <Label className="m-2" >ISBN</Label>
+          <Label>ISBN</Label>
           <Input {...register("isbn", { required: true })} />
         </div>
         <div>
-          <Label className="m-2"   >Description</Label>
+          <Label>Description</Label>
           <Textarea {...register("description")} rows={3} />
         </div>
         <div>
-          <Label className="m-2"  >Copies</Label>
+          <Label>Copies</Label>
           <Input type="number" {...register("copies", { required: true, min: 1 })} />
         </div>
 
-       <div  className="flex justify-center" >
-         <Button 
-                className=" text-lg font-bold bg-gradient-to-r from-purple-300 to-blue-300 text-black"
-        
-        type="submit">
-          Add Book
+        <Button type="submit" className="w-full">
+          Update Book
         </Button>
-       </div>
       </form>
     </section>
   );
 };
 
-export default AddBook;
+export default UpdateBook;
