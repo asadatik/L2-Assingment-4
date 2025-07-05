@@ -19,8 +19,13 @@ export type TBook = {
 
 export type TBorrowBook = {
   totalQuantity: number;
-  book: { isbn: string; title: string }[];
+  book: {
+    isbn: string;
+    title: string;
+  };
 };
+
+
 
 export type TCreateBookForm = {
   title: string;

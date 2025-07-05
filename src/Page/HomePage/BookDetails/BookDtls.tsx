@@ -6,6 +6,8 @@ import { Badge } from "@/components/ui/badge";
 import { BookOpen } from "lucide-react";
 import { useGetBookByIdQuery } from "@/features/api/BooksApi";
 import Loader from "@/components/Loader/Loader";
+import { Button } from "@/components/ui/button";
+import { BorrowModal } from "@/Page/Borrow/BorrowModal";
 ;
 
 
@@ -32,6 +34,8 @@ console.log( book ,  'IUOIOUYIKUIIYUIUYIUYIU');
             >
             {book.genre}
           </Badge>
+
+           
         </CardHeader>
 
         <CardContent className="space-y-3">
@@ -43,6 +47,11 @@ console.log( book ,  'IUOIOUYIKUIIYUIUYIUYIU');
           </p>
           <p><span className="font-semibold">Description:</span></p>
           <p className="text-gray-600">{book.description || "No description"}</p>
+         <div className="flex justify-end"   >
+           <Button title="borrow Book" type="submit" className="border  border-gray-500    hover:bg-gray-300 bg-white text-black ">
+  <BorrowModal bookId={book._id} isHome={true} />
+          </Button>
+         </div>
         </CardContent>
       </Card>
     </section>

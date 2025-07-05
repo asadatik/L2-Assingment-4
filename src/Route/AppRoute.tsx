@@ -1,6 +1,7 @@
 import App from "@/App";
 import AddBook from "@/Page/AddBook/AddBook";
 import AllBooksPage from "@/Page/AllBook";
+import BorrowSummary from "@/Page/Borrow/BorrowSummary";
 import BookDlts from "@/Page/HomePage/BookDetails/BookDtls";
 
 import Home from "@/Page/HomePage/Home";
@@ -41,6 +42,14 @@ const AppRoute = createBrowserRouter([
         element: <UpdateBook/>,
 
       }, 
+ {
+        path: "/borrow-summary",
+        element: <BorrowSummary></BorrowSummary>
+
+      }, 
+
+
+
     ],
   },
 ]);

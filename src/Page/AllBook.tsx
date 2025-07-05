@@ -11,6 +11,7 @@ import { toast } from "react-toastify";
 import { useDeleteBookMutation, useGetBooksQuery } from "@/features/api/BooksApi";
 import type { TBook } from "@/type";
 import { Link } from "react-router-dom";
+import { BorrowModal } from "./Borrow/BorrowModal";
 
 
 
@@ -158,6 +159,11 @@ if (isLoading) {
                     )}
                   </TableCell>
                   <TableCell className="text-right flex justify-end gap-2">
+
+                      <Button title="borrow Book" type="submit" className="border  border-gray-500    hover:bg-gray-300 bg-white text-black ">
+                        <BorrowModal bookId={book._id} isHome={true} />
+                      </Button>   
+
                     <Link to={`/update-book/${book._id}`}>
                       <Button size="sm" variant="outline">
                         <Edit2 className="h-4 w-4" />

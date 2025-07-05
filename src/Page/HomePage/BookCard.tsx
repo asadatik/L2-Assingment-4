@@ -8,7 +8,7 @@ import type { TBook } from "@/type";
 
 
 import { Edit2, Eye, Trash2 } from "lucide-react";
-import { Link } from "react-router-dom"; // ✅ fixed import
+import { Link } from "react-router-dom"; 
 import { toast } from "react-toastify";
 import Swal from "sweetalert2";
 import { BorrowModal } from "../Borrow/BorrowModal";

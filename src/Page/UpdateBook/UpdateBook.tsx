@@ -36,10 +36,12 @@ const UpdateBook= () => {
   const [bookData, setBookData] = useState<TBookInput | null>(null);
   const navigate = useNavigate();
 
-  // Fetch book details by ID
+ 
+
+  
   useEffect(() => {
     const fetchBookData = async () => {
-      const response = await fetch(`http://localhost:5000/api/books/${bookId}`);
+      const response = await fetch(`https://mongose.vercel.app/api/books/${bookId}`);
       const data = await response.json();
       setBookData(data.data);
       if (data?.data) {
@@ -54,6 +56,8 @@ const UpdateBook= () => {
 
     fetchBookData();
   }, [bookId, setValue]);
+
+
 
   const onSubmit = async (data: TBookInput) => {
     try {

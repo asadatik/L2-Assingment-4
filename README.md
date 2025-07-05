@@ -1,69 +1,46 @@
-# React + TypeScript + Vite
+# 📚 Library Management App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A full-stack MERN application for managing books and borrow operations in a library. This app allows users to view, add, edit, and borrow books, and provides an interactive UI for managing library resources efficiently.
 
-Currently, two official plugins are available:
+## 🚀 Live Site
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+🔗 [https://your-live-site-url.vercel.app](https://your-live-site-url.vercel.app)
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 🧰 Tech Stack
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+**Frontend**  
+- React.js  
+- TypeScript  
+- React Router DOM  
+- Redux Toolkit & RTK Query  
+- Tailwind CSS + ShadCN UI  
+- Lucide React Icons  
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+**Backend**  
+- Node.js  
+- Express.js  
+- MongoDB + Mongoose  
+- CORS, dotenv  
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+---
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 📂 Project Structure
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+```bash
+├── client
+│   ├── src
+│   │   ├── components      # Reusable UI components (Table, Button, Loader, etc.)
+│   │   ├── features/api    # RTK Query API slices
+│   │   ├── pages           # All pages (Home, Books, Borrow Summary, etc.)
+│   │   ├── routes          # Route configurations
+│   │   ├── types           # TypeScript types
+│   │   └── App.tsx         # Main app component
+│   └── index.tsx           # App entry point
+│
+├── server
+│   ├── app/controllers     # Book and Borrow route controllers
+│   ├── app/models          # Mongoose schemas
+│   ├── app.ts              # Express app setup
+│   └── index.ts            # Server entry point
