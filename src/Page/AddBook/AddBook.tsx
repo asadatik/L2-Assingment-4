@@ -1,4 +1,3 @@
-"use client";
 
 import { useForm } from "react-hook-form";
 import { Button } from "@/components/ui/button";
@@ -29,7 +28,8 @@ const genres = [
 ];
 
 const AddBook = () => {
-  const { register, handleSubmit, reset } = useForm<TBookInput>();
+  const { register, handleSubmit, reset , formState: { errors }   } = useForm<TBookInput>();
+
   const [createBook] = useAddBookMutation();
   const navigate = useNavigate();
 
@@ -66,7 +66,8 @@ const AddBook = () => {
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
         <div>
           <Label className="m-2"  >Title</Label>
-          <Input {...register("title", { required: true })} />
+       <Input {...register("title", { required: "Title is required" })} />
+          {errors.title && <p className="text-red-500 text-sm">{errors.title.message}</p>}
         </div>
         <div>
           <Label className="m-2"   >Author</Label>

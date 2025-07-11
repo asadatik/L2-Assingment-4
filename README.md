@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # 📚 Library Management System
 
 A modern, full-stack **Library Management System** built using the **MERN stack with TypeScript**. It manages books, borrowing records, and availability tracking in a streamlined and efficient way.
@@ -74,3 +75,5 @@ The system follows a modular, scalable architecture with clearly separated respo
 git clone https://github.com/Md-Firoz-Mahmud-Nur/Assignment-04.git
 cd Assignment-04
 
+=======
+>>>>>>> 44eb1b1 (added validated method in add-book form)
