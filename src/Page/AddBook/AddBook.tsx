@@ -71,12 +71,13 @@ const AddBook = () => {
         </div>
         <div>
           <Label className="m-2"   >Author</Label>
-          <Input {...register("author", { required: true })} />
+                <Input {...register("author", { required: "Author is required" })} />
+          {errors.author && <p className="text-red-500 text-sm">{errors.author.message}</p>}
         </div>
         <div>
           <Label className="m-2" >Genre</Label>
           <select
-            {...register("genre", { required: true })}
+            {...register("genre", {  required: "genre is required"  })}
             className="w-full px-3 py-2 border rounded-md"
           >
             <option value="">Select Genre</option>
@@ -86,10 +87,13 @@ const AddBook = () => {
               </option>
             ))}
           </select>
+          {errors.genre && <p className="text-red-500 text-sm">{errors.genre.message}</p>}
+           
         </div>
         <div>
           <Label className="m-2" >ISBN</Label>
-          <Input {...register("isbn", { required: true })} />
+          <Input {...register("isbn", { required: "isbn is required" })} />
+          
         </div>
         <div>
           <Label className="m-2"   >Description</Label>
